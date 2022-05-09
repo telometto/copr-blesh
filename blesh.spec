@@ -30,19 +30,15 @@ Bash Line Editor―a full-featured line editor written in pure Bash! Syntax high
 
 # These are instructions to build the package.
 %build
-tar xJf ble-0.4.0-devel2.tar.xz -C ~/.local/share/blesh
-echo 'source ~/.local/share/blesh' >> ~/.bashrc
-
-
-#tar xJf ble-0.4.0-devel2.tar.xz -C ~/.local/share/blesh
-#[[ $- == *i* ]] && source ~/.local/share/blesh/ble.sh --attach=none
-#[[ ${BLE_VERSION-} ]] && ble-attach
+# Nothing to do.
 
 # This installs package into system after it has been been built.
 # Invoked e.g. by `dnf install example`.
 %install
 #install -d %{buildroot}%{_bindir}
 #cp -a blesh %{buildroot}%{_bindir}/fedora-copr-example
+tar xJf ble-0.4.0-devel2.tar.xz -C ~/.local/share/blesh
+echo 'source ~/.local/share/blesh' >> ~/.bashrc
 
 
 # Here you should list all the files the package provides.
