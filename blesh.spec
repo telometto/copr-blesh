@@ -13,7 +13,7 @@ Summary: Copr repo of akinomyoga's bash editor "ble.sh"
 
 License: BSD-3-Clause license
 URL:     %{build_repo}
-Source0: https://github.com/akinomyoga/ble.sh/releases/download/v0.4.0-devel2/ble-0.4.0-devel2.tar.xz
+Source0: https://github.com/akinomyoga/ble.sh.git
 
 BuildRequires: git
 BuildRequires: make
@@ -26,7 +26,7 @@ Bash Line Editor―a full-featured line editor written in pure Bash! Syntax high
 
 # These are instructions to prepare sources for the build.
 %prep
-%setup -q -c
+%setup -q
 
 # These are instructions to build the package.
 %build
@@ -35,16 +35,12 @@ Bash Line Editor―a full-featured line editor written in pure Bash! Syntax high
 # This installs package into system after it has been been built.
 # Invoked e.g. by `dnf install example`.
 %install
-#install -d %{buildroot}%{_bindir}
-#cp -a blesh %{buildroot}%{_bindir}/fedora-copr-example
-tar xJf ble-0.4.0-devel2.tar.xz -C ~/.local/share/blesh
-echo 'source ~/.local/share/blesh' >> ~/.bashrc
-
+make -C ble.sh install PREFIX=~/.local
+echo 'source ~/.local/share/blesh/ble.sh' >> ~/.bashrc
 
 # Here you should list all the files the package provides.
 %files
 %doc
-#%{_bindir}/ble.sh
 
 # What has changed since the last version. High level overview
 # over the last commits.
