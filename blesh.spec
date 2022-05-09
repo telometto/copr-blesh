@@ -21,17 +21,17 @@ Bash Line Editor―a full-featured line editor written in pure Bash! Syntax high
 
 # These are instructions to build the package.
 %build
-# make %{?_smp_mflags} ## from author of tutorial
+make %{?_smp_mflags} ## from author of tutorial
 
-tar xJf ble-0.4.0-devel2.tar.xz -C ~/.local/share/blesh
-[[ $- == *i* ]] && source ~/.local/share/blesh/ble.sh --attach=none
-[[ ${BLE_VERSION-} ]] && ble-attach
+#tar xJf ble-0.4.0-devel2.tar.xz -C ~/.local/share/blesh
+#[[ $- == *i* ]] && source ~/.local/share/blesh/ble.sh --attach=none
+#[[ ${BLE_VERSION-} ]] && ble-attach
 
 # This installs package into system after it has been been built.
 # Invoked e.g. by `dnf install example`.
 %install
-#install -d %{buildroot}%{_bindir}
-#cp -a blesh %{buildroot}%{_bindir}/fedora-copr-example
+install -d %{buildroot}%{_bindir}
+cp -a blesh %{buildroot}%{_bindir}/fedora-copr-example
 
 
 # Here you should list all the files the package provides.
